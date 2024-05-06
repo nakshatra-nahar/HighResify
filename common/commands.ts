@@ -1,0 +1,30 @@
+const COMMAND = {
+  SELECT_FILE: "Select a File",
+  SELECT_FOLDER: "Select a Folder",
+  HighResify: "Upscale the Image",
+  HighResify_DONE: "Upscaling Done",
+  HighResify_PROGRESS: "Send Progress from Main to Renderer",
+  DOUBLE_HighResify: "Double Upscale the Image",
+  DOUBLE_HighResify_DONE: "Double Upscaling Done",
+  DOUBLE_HighResify_PROGRESS: "Send Double HighResify Progress from Main to Renderer",
+  FOLDER_HighResify: "Upscale a Folder",
+  FOLDER_HighResify_DONE: "Folder upscaling successful",
+  FOLDER_HighResify_PROGRESS:
+    "Send Folder Upscaling Progress from Main to Renderer",
+  OPEN_FOLDER: "Open Folder",
+  HighResify_VIDEO: "Upscale the Video",
+  HighResify_VIDEO_DONE: "Video Upscaling Done",
+  HighResify_VIDEO_PROGRESS: "Send Video Upscale Progress from Main to Renderer",
+  FFMPEG_VIDEO_DONE: "Ran FFMpeg successfully",
+  FFMPEG_VIDEO_PROGRESS: "Running FFMpeg for frame extraction",
+  SELECT_CUSTOM_MODEL_FOLDER: "Select a Custom Model Folder",
+  GET_MODELS_LIST: "Send models list from main to renderer",
+  CUSTOM_MODEL_FILES_LIST: "Send custom model files list to renderer",
+  LOG: "Log",
+  STOP: "Stop the current operation",
+  OS: "Get OS",
+  SCALING_AND_CONVERTING: "Adding some finishing touches",
+  HighResify_ERROR: "Upscaling Error",
+};
+
+export default COMMAND;

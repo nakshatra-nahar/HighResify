@@ -1,0 +1,62 @@
+{
+  "id": "org.HighResify.HighResify",
+  "sdk": "org.freedesktop.Sdk",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "22.08",
+  "base": "org.electronjs.Electron2.BaseApp",
+  "base-version": "22.08",
+  "command": "HighResify-run",
+  "separate-locales": false,
+  "finish-args": [
+    "--device=dri",
+    "--filesystem=home",
+    "--share=network",
+    "--socket=x11",
+    "--socket=pulseaudio"
+  ],
+  "modules": [
+    {
+      "name": "zypak",
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/refi64/zypak",
+          "tag": "v2022.04"
+        }
+      ]
+    },
+    {
+      "name": "HighResify",
+      "buildsystem": "simple",
+      "sources": [
+        {
+          "type": "file",
+          "only-arches": ["x86_64"],
+          "url": "https://github.com/HighResify/HighResify/releases/download/v2.9.1/HighResify-2.9.1-linux.zip",
+          "sha256": "238f1d9bebca8553b94572c6f9cf78b7838429f560842a90ad1f99ecda306c02"
+        },
+        {
+          "type": "file",
+          "url": "https://raw.githubusercontent.com/HighResify/HighResify/main/flatpak/org.HighResify.HighResify.metainfo.xml",
+          "sha256": "e9fe8dc362f7b70f31c752c9c025b2f03447e17eaa93aa725a3a56b3ffc7893c"
+        },
+        {
+          "type": "script",
+          "dest-filename": "HighResify-run",
+          "commands": ["zypak-wrapper /app/HighResify/HighResify"]
+        }
+      ],
+      "build-commands": [
+        "install -d /app/HighResify",
+        "unzip HighResify-2.9.1-linux -d /app/HighResify",
+        "install HighResify-run /app/bin/",
+        "install -Dm644 /app/HighResify/icon_512x512.png /app/share/icons/hicolor/512x512/apps/org.HighResify.HighResify.png",
+        "install -Dm644 /app/HighResify/icon_128x128.png /app/share/icons/hicolor/128x128/apps/org.HighResify.HighResify.png",
+        "install -Dp -m644 org.HighResify.HighResify.metainfo.xml /app/share/metainfo/org.HighResify.HighResify.metainfo.xml",
+        "touch /app/HighResify/org.HighResify.HighResify.desktop",
+        "desktop-file-edit --set-key=Exec --set-value='HighResify-run %U' --set-key=Icon --set-value='org.HighResify.HighResify' --set-key=Comment --set-value='Upscale Images' --set-key=Name --set-value='HighResify' --set-key=StartupNotify --set-value='false' --set-key=Categories --set-value='ImageProcessing;RasterGraphics;Graphics;' --set-key=Type --set-value='Application' /app/HighResify/org.HighResify.HighResify.desktop",
+        "install -Dm644 /app/HighResify/org.HighResify.HighResify.desktop /app/share/applications/org.HighResify.HighResify.desktop"
+      ]
+    }
+  ]
+}
